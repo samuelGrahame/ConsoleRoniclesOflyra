@@ -239,7 +239,7 @@ namespace ConsoleApp3
 
              if(!loaded)
             {
-                Console.WriteLine("Welcome To Chronicles Of Elyra");
+                Console.WriteLine("Welcome To ronicles Of lyra");
                 Console.WriteLine("What Is Your Name? ");
                 Name = Console.ReadLine();
                 Console.Clear();
