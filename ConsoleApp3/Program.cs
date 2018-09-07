@@ -38,7 +38,7 @@ namespace ConsoleApp3
         static string Race;
 
         static bool CanGetSeeds = false;
-        static int Seeds = 100;
+        static int Seeds = 0;
 
         static bool HasSword = false;
 
