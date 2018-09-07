@@ -38,7 +38,7 @@ namespace ConsoleApp3
         static string Race;
 
         static bool CanGetSeeds = false;
-        static int Seeds = 0;
+        static int Seeds = 100;
 
         static bool HasSword = false;
 
@@ -204,7 +204,7 @@ namespace ConsoleApp3
         static void TakeStep()
         {
             Month++;
-            if(Month == 12)
+            if(Month == 365)
             {
                 Age++;
                 Month = 1;
@@ -215,8 +215,11 @@ namespace ConsoleApp3
                 int count = SmallTrees[i].Item3 - 1;
                 if(count == 0)
                 {
-                    SmallTrees.RemoveAt(i);
                     ChangeTile('T', SmallTrees[i].Item1, SmallTrees[i].Item2);
+                    SmallTrees.RemoveAt(i);
+
+                    
+                    
                 }
                 else
                 {
@@ -310,6 +313,12 @@ namespace ConsoleApp3
             Console.WriteLine();
             Console.ResetColor();
 
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+
+            Console.WriteLine($"Age: {(Age + "." + Month)} - Gold: {Gold} - Wood: {Wood} - Seeds: {Seeds} - Hammer: {(HasAHammer ? "Yes": "No")} - Boat: {(HasABoat ? "Yes" : "No")} - Sword: {(HasSword ? "Yes" : "No")}");
+
+            Console.ResetColor();
         }
 
         static void Main(string[] args)
@@ -836,9 +845,13 @@ namespace ConsoleApp3
                     
                 }
 
-                Console.WriteLine("Which Direction do you want to go? (north, east, south & west)");
-                
-                string result = string.IsNullOrWhiteSpace(preAnswer) || preAnswer == "no" ? Console.ReadLine().ToLower() : preAnswer;
+                string result;
+                do
+                {
+                    Console.WriteLine("Which Direction do you want to go? (north, east, south & west)");
+                    result = string.IsNullOrWhiteSpace(preAnswer) || preAnswer == "no" ? Console.ReadLine().ToLower() : preAnswer;
+                } while (string.IsNullOrWhiteSpace(result));
+
                 Console.Clear();
 
                 if (result.StartsWith("north") || "north".StartsWith(result))
